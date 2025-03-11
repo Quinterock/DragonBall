@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
         guard let _ = (scene as? UIWindowScene) else { return }
         let networkModel = NetworkModel.shared
         
@@ -57,6 +61,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
+        // MARK: - Crear Root View
+        
+        guard let scene = (scene as? UIWindowScene) else { return }
+        // Creo un UIWindow a partir del UIWindowScene que acabo de desempaquetar
+        let window = UIWindow(windowScene: scene)
+        
+        let logInViewController = LogInViewController()
+        let navigationController = UINavigationController(rootViewController: logInViewController)
+        
+        // Asigno el sign in view controller al navigation stack
+        navigationController.viewControllers = [logInViewController]
+        
+        // Defino el navigation controller como root del UIWindow
+        window.rootViewController = navigationController
+        
+        // Hago el window que cree en la linea 68, Key and Visible. Mostramos el UIWindow de la linea 68
+        window.makeKeyAndVisible()
+        // Persisto en memoria el window de la linea 68
+        self.window = window
         
     }
 }
