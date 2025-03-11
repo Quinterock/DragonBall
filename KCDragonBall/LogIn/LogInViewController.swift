@@ -15,10 +15,15 @@ class LogInViewController: UIViewController {
     @IBOutlet var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
     
-    @IBAction func loginButtonAction() {
+    
+    @IBAction func loginButtonAction(_ sender: UIButton) {
+        let herosListTableViewController = HerosListTableViewController(
+            nibName: HerosListTableViewController.identifier,
+            bundle: nil
+        )
+        navigationController?.pushViewController(herosListTableViewController, animated: true)
     }
 }

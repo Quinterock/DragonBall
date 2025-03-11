@@ -39,7 +39,7 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Login"/>
                             <connections>
-                                <action selector="loginButtonAction" destination="-1" eventType="touchUpInside" id="edA-oz-GYH"/>
+                                <action selector="loginButtonAction:" destination="-1" eventType="touchUpInside" id="gTa-zi-SGH"/>
                             </connections>
                         </button>
                     </subviews>
