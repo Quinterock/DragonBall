@@ -38,8 +38,6 @@ final class NetworkModel {
             return
         }
         
-        // Voy a crear un string tal que usuario:contraseña
-        // adri4silva@gmail.com:abcdef
         let loginString = String(format: "%@:%@", user, password)
         
         // Encodifico el loginString con utf8

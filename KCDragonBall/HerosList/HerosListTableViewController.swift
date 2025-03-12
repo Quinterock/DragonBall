@@ -31,15 +31,6 @@ final class HerosListTableViewController: UITableViewController {
         NetworkModel.shared.getHeroes { [weak self] result in
             switch result {
             case let .success(heroes):
-                print()
-                print()
-                print()
-                print(heroes.count)
-                print()
-                print()
-                print("Héroes recibidos: \(heroes)")
-                print()
-                print()
                 self?.heroes = heroes
                 DispatchQueue.main.async {
                     self?.tableView.reloadData() // Recargamos mla tabla con los héroes
