@@ -117,7 +117,7 @@ final class NetworkModel {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json; chaset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = serializedBody
         

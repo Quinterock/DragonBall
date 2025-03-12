@@ -11,35 +11,77 @@ class HerosListTableViewController: UITableViewController {
     
     static let identifier = String(describing: HerosListTableViewController.self)
     
-    // Suponiendo que tienes un arreglo de héroes para mostrar en el TableView
-        let heroes = ["Superman", "Batman", "Spiderman", "Iron Man", "Wonder Woman"]
+    var heroes: [Hero] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Héroes"
+        
         // MARK: - Registrar la celda para mostrar en el TableView
         tableView.register(
             UINib(nibName: HerosListTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: HerosListTableViewCell.identifier)
-        
-        title = "Héroes"
+            forCellReuseIdentifier: HerosListTableViewCell.identifier
+        )
+        loadHeroes()
     }
+    
     // MARK: - Table View Data Source
-    
-    // Número de filas
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            // Devuelve el número de filas que quieres mostrar
-            return heroes.count  // Usamos el número de héroes como el número de filas
+    func loadHeroes() {
+        NetworkModel.shared.getHeroes { [weak self] result in
+            switch result {
+            case let .success(heroes):
+                print()
+                print()
+                print()
+                print(heroes.count)
+                print()
+                print()
+                print("Héroes recibidos: \(heroes)")
+                print()
+                print()
+                self?.heroes = heroes
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData() // Recargamos mla tabla con los héroes
+                }
+            case .failure(let error):
+                print("Error obteniendo los héroes \(error)")
+            }
         }
+    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            // Deque la celda con el identificador correcto
-            let cell = tableView.dequeueReusableCell(withIdentifier: HerosListTableViewCell.identifier, for: indexPath) as! HerosListTableViewCell
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+    -> Int {
+        return heroes.count
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            // Obtener una celda reciclada para usarla de nuevo
+            // casteamos a as! HerosListTableViewCell para acceder a sus propiedades segun el héroe
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: HerosListTableViewCell.identifier,
+                for: indexPath) as! HerosListTableViewCell
+            // Obtener un héroe del Array Hero con cada uno de sus índices
+            let hero = heroes[indexPath.row]
             
-            // Configura la celda con el nombre del héroe
-            cell.heroNameLabel.text = heroes[indexPath.row]
-            cell.heroDescriptionLabel.text = "Descripción del héroe \(indexPath.row + 1)" // Esto lo puedes modificar según tus datos
-            
+            cell.configureCellWithHero(with: hero)
             return cell
         }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        150
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Configura el separador de cada celda (espaciado o margenes)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
 }
