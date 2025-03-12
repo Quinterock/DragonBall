@@ -21,14 +21,12 @@ final class LogInViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         //  Poner de fondo la imagen
         view.sendSubviewToBack(backgroundImageView)
-//        labelsConf()
+        labelsConf()
     }
     
-//    func labelsConf() {
-//        let newHeight: CGFloat = 100
-//        userNameTextField.frame.size.height = newHeight
-//        passwordTextField.frame.size.height = newHeight
-//    }
+    func labelsConf() {
+        loginButton.tintColor = .orange
+    }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
         let email = userNameTextField.text
