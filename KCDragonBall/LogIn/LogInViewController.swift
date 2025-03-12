@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+final class LogInViewController: UIViewController {
     @IBOutlet var userNameTextField: UITextField!
     
     @IBOutlet var passwordTextField: UITextField!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HerosListTableViewController: UITableViewController {
+final class HerosListTableViewController: UITableViewController {
     
     static let identifier = String(describing: HerosListTableViewController.self)
     
@@ -84,4 +84,15 @@ class HerosListTableViewController: UITableViewController {
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
     
+    // MARK: - Para las celdas seleccionadas
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedHero = heroes[indexPath.row]
+        let heroDescription = HerosDetailsViewController(nibName: HerosDetailsViewController.identifier, bundle: nil)
+        // Igualar la descripción al Héroe seleccionado
+        heroDescription.hero = selectedHero
+        
+        navigationController?.pushViewController(heroDescription, animated: true)
+        
+    }
 }

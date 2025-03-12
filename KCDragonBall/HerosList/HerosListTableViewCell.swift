@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HerosListTableViewCell: UITableViewCell {
+final class HerosListTableViewCell: UITableViewCell {
     @IBOutlet var heroNameLabel: UILabel!
     
     @IBOutlet var heroDescriptionLabel: UILabel!
@@ -19,20 +19,10 @@ class HerosListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     // Recibir los Héroes y poner cada celda con los datos de cada uno
     func configureCellWithHero(with hero: Hero) {
-        print()
-        print()
-        print()
-        print("Hero name: \(hero.name)")
-        print("Hero description: \(hero.description)")
-        print("Hero photo URL: \(hero.photo)")
-        print()
-        print()
-        print()
         
         heroNameLabel.text = hero.name
         heroDescriptionLabel.text = hero.description
@@ -44,6 +34,7 @@ class HerosListTableViewCell: UITableViewCell {
             heroImageView.image = nil
         }
     }
+    
     
 }
 
