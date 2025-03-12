@@ -23,9 +23,9 @@ class HerosDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-
+        
     }
-
+    
     private func configuration() {
         guard let hero else { return }
         heroNameDetail.text = hero.name
@@ -34,7 +34,6 @@ class HerosDetailsViewController: UIViewController {
         if let url = URL(string: hero.photo) {
             heroImageDetail.setImage(url: url)
         }
+        title = hero.name
     }
-    
-
 }
