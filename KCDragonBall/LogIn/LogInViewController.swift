@@ -13,31 +13,26 @@ final class LogInViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     @IBOutlet var loginButton: UIButton!
+    
+    @IBOutlet var backgroundImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.isSecureTextEntry = true
+        //  Poner de fondo la imagen
+        view.sendSubviewToBack(backgroundImageView)
+//        labelsConf()
     }
-
+    
+//    func labelsConf() {
+//        let newHeight: CGFloat = 100
+//        userNameTextField.frame.size.height = newHeight
+//        passwordTextField.frame.size.height = newHeight
+//    }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
-        
-        
         let email = userNameTextField.text
         let password = passwordTextField.text
-        
-//        let email = "luisgqr1975@gmail.com"
-//        let password = "abcdef"
-        if userNameTextField.text?.isEmpty == true || passwordTextField.text?.isEmpty == true {
-            // Mostrar un mensaje de error si el campo está vacío
-            print()
-            print()
-            print()
-            print("Los campos no pueden estar vacíos.")
-            print()
-            print()
-            print()
-            return
-        }
         
         NetworkModel.shared.login(
             user: email ?? "",
@@ -55,22 +50,13 @@ final class LogInViewController: UIViewController {
                         // Navegar al HerosListTableVC
                         self.navigationController?.pushViewController(herosListTableViewController, animated: true)
                     } else {
-                        // Token inválido:
-                        print("XXXXXXXXXX")
-                        print(email ?? "")
-                        print(password ?? "")
-                        print("XXXXXXXXXX")
-                        self.showErrorMessage("Credenciales incorrectas")
+                        self.showErrorMessage("Intente nuevamente")
                     }
                 }
                 
             case .failure(_):
                 DispatchQueue.main.async {
-                    print("XXXXXXXXXX")
-                    print(email ?? "")
-                    print(password ?? "")
-                    print("XXXXXXXXXX")
-                    self.showErrorMessage("Credenciales incorrectas")
+                    self.showErrorMessage("Intente nuevamente")
                 }
             }
             
@@ -78,7 +64,7 @@ final class LogInViewController: UIViewController {
         
     }
     private func showErrorMessage(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Credenciales incorrectas", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }

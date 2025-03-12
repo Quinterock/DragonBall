@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="KCDragonBall" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundImageView" destination="vTG-Oh-9pj" id="2aG-de-VNE"/>
                 <outlet property="loginButton" destination="Vpt-no-YVy" id="IV6-SG-gTa"/>
                 <outlet property="passwordTextField" destination="VzD-jA-g2h" id="cUl-xj-6FN"/>
                 <outlet property="userNameTextField" destination="ggR-x4-rUu" id="spe-tR-bOk"/>
@@ -21,21 +22,21 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ejv-4p-Q6X">
-                    <rect key="frame" x="16" y="463.66666666666669" width="361" height="134.33333333333331"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ejv-4p-Q6X">
+                    <rect key="frame" x="16" y="549" width="361" height="169"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggR-x4-rUu">
-                            <rect key="frame" x="0.0" y="0.0" width="361" height="34"/>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggR-x4-rUu">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="45.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VzD-jA-g2h">
-                            <rect key="frame" x="0.0" y="49.999999999999943" width="361" height="34"/>
+                            <rect key="frame" x="0.0" y="61.666666666666629" width="361" height="45.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" textContentType="password"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpt-no-YVy">
-                            <rect key="frame" x="0.0" y="99.999999999999943" width="361" height="34.333333333333343"/>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpt-no-YVy">
+                            <rect key="frame" x="0.0" y="123.33333333333339" width="361" height="45.666666666666671"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Login"/>
                             <connections>
@@ -44,20 +45,33 @@
                         </button>
                     </subviews>
                 </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo3" translatesAutoresizingMaskIntoConstraints="NO" id="vTG-Oh-9pj">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ejv-4p-Q6X" secondAttribute="trailing" constant="16" id="2XQ-o6-vHf"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ejv-4p-Q6X" secondAttribute="bottom" constant="220" id="M0q-hS-IWV"/>
+                <constraint firstItem="vTG-Oh-9pj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" id="7J6-bG-XTO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vTG-Oh-9pj" secondAttribute="bottom" id="COO-JA-R8x"/>
+                <constraint firstItem="vTG-Oh-9pj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CTz-tg-dTi"/>
+                <constraint firstItem="Ejv-4p-Q6X" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="490" id="Dhp-DT-SzX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ejv-4p-Q6X" secondAttribute="bottom" constant="100" id="M0q-hS-IWV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vTG-Oh-9pj" secondAttribute="trailing" id="VRl-zk-Teg"/>
                 <constraint firstItem="Ejv-4p-Q6X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ghV-J5-VAK"/>
             </constraints>
             <point key="canvasLocation" x="131" y="-11"/>
         </view>
     </objects>
     <resources>
+        <image name="fondo3" width="1080" height="1920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
