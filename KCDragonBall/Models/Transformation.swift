@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Transformation: Codable {
+struct Transformation: Codable, Equatable {
     let name: String
     let id: String
     let photo: String

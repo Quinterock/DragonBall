@@ -13,13 +13,35 @@ class HerosDetailsViewController: UIViewController {
     
     var hero: Hero?
     
+    var transformations: [Transformation] = []
+    
     @IBOutlet var heroImageDetail: UIImageView!
     
     @IBOutlet var heroNameDetail: UILabel!
     
     @IBOutlet var heroDescriptionDetail: UILabel!
     
+
     
+    @IBAction func transformationsButton(_ sender: UIButton) {
+        // Desempaquetar hero - Asegurarse que haya un hero antes de que se llame la función
+        
+        guard let hero else { return }
+        
+        NetworkModel.shared.getTransformations(for: hero) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let transformations):
+//                    self?.transformations = transformations
+                    let transformationsVC = TransformationsTableViewController(nibName: TransformationsTableViewController.identifier, bundle: nil)
+                    transformationsVC.transformations = transformations
+                    self?.navigationController?.pushViewController(transformationsVC, animated: true)
+                case .failure(let error):
+                    print("Error obteniendo heroe")
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
