@@ -10,6 +10,7 @@ import XCTest
 
 final class HeroTests: XCTestCase {
     private var sut: Hero!
+    private var sutTransform: Transformation!
     
     func test_init_withName_isGoku() {
         // Given/ Arrange
@@ -26,5 +27,22 @@ final class HeroTests: XCTestCase {
         
         // Then/ Assert
         XCTAssertEqual(sut.name, name)
+    }
+    
+    // Comprobar que existe una transformacion con el nombre de Kaio-Ken
+    func test_Transformation_withName_kaioken_exist() {
+        // Given / Arrange
+        let transformation = "Kaio-Ken"
+        
+        // When / Act
+        sutTransform = Transformation(
+            name: transformation,
+            id: "x",
+            photo: "x",
+            description: "x"
+        )
+        
+        // Then / Assert
+        XCTAssertEqual(sutTransform.name, transformation)
     }
 }
