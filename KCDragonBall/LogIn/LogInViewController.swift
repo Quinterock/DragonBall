@@ -28,6 +28,7 @@ final class LogInViewController: UIViewController {
         loginButton.tintColor = .orange
     }
     
+    // MARK: - Método Login
     @IBAction func loginButtonAction(_ sender: UIButton) {
         let email = userNameTextField.text
         let password = passwordTextField.text
@@ -35,7 +36,7 @@ final class LogInViewController: UIViewController {
         NetworkModel.shared.login(
             user: email ?? "",
             password: password ?? ""
-        ) { result in
+        ) { result in // Closure que recibe un parametro result cuando termina el login
             switch result {
             case .success(let token):
                 DispatchQueue.main.async {
@@ -61,6 +62,8 @@ final class LogInViewController: UIViewController {
         }
         
     }
+    
+    // Creacion de alerta
     private func showErrorMessage(_ message: String) {
         let alert = UIAlertController(title: "Credenciales incorrectas", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
