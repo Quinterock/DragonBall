@@ -80,7 +80,7 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo3" translatesAutoresizingMaskIntoConstraints="NO" id="vTG-Oh-9pj">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo3" translatesAutoresizingMaskIntoConstraints="NO" id="vTG-Oh-9pj">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                 </imageView>
@@ -96,7 +96,7 @@
                 <constraint firstItem="vTG-Oh-9pj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CTz-tg-dTi"/>
                 <constraint firstItem="Ejv-4p-Q6X" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="490" id="Dhp-DT-SzX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ejv-4p-Q6X" secondAttribute="bottom" constant="100" id="M0q-hS-IWV"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vTG-Oh-9pj" secondAttribute="trailing" id="VRl-zk-Teg"/>
+                <constraint firstAttribute="trailing" secondItem="vTG-Oh-9pj" secondAttribute="trailing" id="VRl-zk-Teg"/>
                 <constraint firstItem="MaS-ty-ARq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bVU-Qz-b1q"/>
                 <constraint firstItem="Ejv-4p-Q6X" firstAttribute="top" secondItem="i11-Gb-yX5" secondAttribute="bottom" constant="300" id="dvF-7h-QzX"/>
                 <constraint firstItem="Ejv-4p-Q6X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ghV-J5-VAK"/>
