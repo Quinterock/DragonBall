@@ -11,8 +11,9 @@ class TransformationsTableViewController: UITableViewController {
     
     static let identifier = String(describing: TransformationsTableViewController.self)
 
-    var hero: Hero?
+    var transformation: Transformation?
     var transformations: [Transformation] = []
+    var hero: Hero?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,19 @@ class TransformationsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         130
+    }
+    
+    // MARK: - Para transformación seleccionada
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedTransformation = transformations[indexPath.row]
+        let transformationDescription = TransformationsDetailsViewController(nibName: TransformationsDetailsViewController.identifier, bundle: nil)
+        // Igualar la descripción a la transformación seleccionada
+        
+        transformationDescription.transformation = selectedTransformation
+        
+        navigationController?.pushViewController(transformationDescription, animated: true)
+        
     }
     
 }

@@ -7,23 +7,30 @@
 
 import UIKit
 
-class TransformationsDetailsViewController: UIViewController {
-
+final class TransformationsDetailsViewController:
+    UIViewController {
+    var transformation: Transformation?
+    static let identifier = String(describing: TransformationsDetailsViewController.self)
+    
+    @IBOutlet weak var imageDetails: UIImageView!
+    
+    @IBOutlet weak var nameDetails: UILabel!
+    
+    @IBOutlet weak var descriptionDetails: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        transformation_Details_Configuration()
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func transformation_Details_Configuration() {
+        nameDetails.text = transformation?.name
+        descriptionDetails.text = transformation?.description
+        
+        if let url = URL(string: transformation?.photo ?? "") {
+            imageDetails.setImage(url: url)
+        }
+        title = transformation?.name
     }
-    */
 
 }
